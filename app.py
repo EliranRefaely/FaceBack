@@ -22,7 +22,7 @@ def home():
         title = request.form['title']
         content = request.form['content']
 
-        cursor.execute("INSERT INTO posts VALUES (?, ?, ?, datetime('now'));", author, title, content)
+        cursor.execute("INSERT INTO posts VALUES (?, ?, ?, datetime('now'));", (author, title, content))
         conn.commit()
         cursor.execute("SELECT * FROM posts ORDER BY 4 DESC LIMIT 15;")
         posts = cursor.fetchall()
